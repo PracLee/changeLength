@@ -6,16 +6,65 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/inputEditText"
+        android:layout_width="200sp"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:textSize="25sp"
+        android:gravity="end"
+        android:hint="input number"
+        android:inputType="numberDecimal"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.7" />
+        app:layout_constraintVertical_bias="0.4"
+        app:layout_constraintHorizontal_bias="0.25"
+        android:maxLength="7"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="100"
+        android:layout_marginTop="30sp"
+        android:textSize="30sp"
+        android:gravity="end"
+        android:textColor="@color/black"
+        android:id="@+id/outputTextView"
+        app:layout_constraintEnd_toEndOf="@+id/inputEditText"
+        app:layout_constraintStart_toStartOf="@+id/inputEditText"
+        app:layout_constraintTop_toBottomOf="@id/inputEditText" />
+    <TextView
+        android:id="@+id/inputEditTextParams"
+        android:text="cm"
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16sp"
+        app:layout_constraintStart_toEndOf="@id/inputEditText"
+        app:layout_constraintTop_toTopOf="@id/inputEditText"
+        app:layout_constraintBaseline_toBaselineOf="@id/inputEditText"
+        />
+    <TextView
+        android:id="@+id/outputEditTextReturn"
+        android:text="m"
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16sp"
+        app:layout_constraintStart_toEndOf="@id/outputTextView"
+        app:layout_constraintTop_toTopOf="@id/outputTextView"
+        app:layout_constraintBaseline_toBaselineOf="@id/outputTextView"
+        />
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/inputEditText"
+        app:layout_constraintBottom_toTopOf="@id/outputTextView"
+        app:layout_constraintStart_toEndOf="@id/inputEditTextParams"
+        android:layout_marginStart="16sp"
+        android:src="@drawable/baseline_swap_vert_24"
+        android:id="@+id/swapImageBtn"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
