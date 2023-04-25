@@ -9,6 +9,10 @@ import java.lang.NumberFormatException
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+
+    var inputNumber : Int = 0
+    var cmToMeter = true
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -21,8 +25,6 @@ class MainActivity : AppCompatActivity() {
         val outputTextViewReturn = binding.outputEditTextReturn
         val btnSwap = binding.swapImageBtn
 
-        var inputNumber : Int = 0
-        var cmToMeter = true
         inputTextView.addTextChangedListener { text ->
             inputNumber = if(text.isNullOrEmpty()){
                 0
@@ -49,5 +51,17 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putBoolean("cmToMeter", cmToMeter)
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        cmToMeter = savedInstanceState.getBoolean("cmToMeter")
+        binding.inputEditTextParams.text = if (cmToMeter) "cm" else "m"
+        binding.outputEditTextReturn.text = if (cmToMeter) "m" else "cm"
+        super.onRestoreInstanceState(savedInstanceState)
     }
 }
